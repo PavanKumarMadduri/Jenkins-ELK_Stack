@@ -31,7 +31,7 @@ services:
                         - elasticsearch
                 volumes:
                         - ./logstash:/logstash-config
-                command: logstash -f /logstash-config/logstash.conf
+                command: logstash -f /logstash-config/logstash.conf --config.reload.automatic
 
         jenkins:
                 build:
