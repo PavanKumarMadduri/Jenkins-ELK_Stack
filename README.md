@@ -44,4 +44,4 @@ Access Kibana GUI using URL "http://<IP>:5601" and Goto logs sections to check i
 
 You should see Index getting created as per the configuration given in logstash.conf output section. In Kibana navigate through Management > Elasticsearch > Index Management to see the same.
 
-![Index Creation](./imagesElasticSearch_Index.PNG)
+![Index Creation](./images/ElasticSearch_Index.PNG)
