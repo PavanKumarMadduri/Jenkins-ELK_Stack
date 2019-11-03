@@ -10,7 +10,7 @@ Please open necessary ports to allow communication between different components 
 
 Clone repo https://github.com/PavanKumarMadduri/Jenkins-ELK_Stack.git
 
-Make sure the cloned folder has enough permissions to install containers
+Make sure the cloned folder has enough permissions to access the files required to install containers
 
 Use the command "docker-compose up -d" to create 4 container (Jenkins, Logstash, ElasticSearch, Kibana)
 
