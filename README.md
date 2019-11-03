@@ -4,19 +4,19 @@
 
 Docker, docker-compose
 
-Please open necessary ports to allow communication between different components of container (Jenkins: 8080, 50000 & Kibana: 5601 & Logstash: 5044 & ElastiSearch: 9200, 9300)
+Please open the necessary ports to allow communication between the different components of containers (Jenkins: 8080, 50000 & Kibana: 5601 & Logstash: 5044 & ElastiSearch: 9200, 9300)
 
 ## Steps
 
 Clone repo https://github.com/PavanKumarMadduri/Jenkins-ELK_Stack.git
 
-Make sure the cloned folder has enough permissions to access the files required to install containers
+Make sure the cloned folder has enough permission to access the files required to install containers
 
-Use the command "docker-compose up -d" to create 4 container (Jenkins, Logstash, ElasticSearch, Kibana)
+Use the command "docker-compose up -d" to create 4 containers (Jenkins, Logstash, ElasticSearch, Kibana)
 
 ### Jenkins
 
-Login into Jenkins container using the command "docker exec -it jenkins bash"
+Login to Jenkins container using the command "docker exec -it jenkins bash"
 
 Start the filebeat service using "service filebeat status"
 
@@ -24,7 +24,7 @@ Start the filebeat service using "service filebeat status"
 
 Open Jenkins GUI using URL http://<IP>:8080
 
-Create a Pipeling Project and Enter your Github project details for which you want to run CI/CD
+Create a Pipeline Project and enter your Github repo details for which you want to run CI/CD
 
 ### Github
 
@@ -42,6 +42,6 @@ Access Kibana GUI using URL "http://<IP>:5601" and Goto logs sections to check i
 
 ![Kibana Logs](./images/Kibana_logs.PNG)
 
-You should see Index getting created as per the configuration given in logstash.conf output section. In Kibana navigate through Management > Elasticsearch > Index Management to see the same.
+You should see the Index getting created as per the configuration given in logstash.conf output section. In Kibana, navigate through Management > Elasticsearch > Index Management to see the same.
 
 ![Index Creation](./images/ElasticSearch_Index.PNG)
