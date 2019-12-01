@@ -1,0 +1,31 @@
+---
+- name: CI Bot
+  hosts: targets
+  gather_facts: false:
+  become: true
+  tasks:
+
+   - name: update apt
+     apt:
+      update_cache: yes
+
+   - name: Install Dependencies
+     apt:
+      state: present
+      pkg:
+       - git
+       - docker.io
+       - docker-compose
+
+   - name: Clone Repository
+     git:
+      repo: ''
+      dest: ./Bot
+      update: yes
+
+   - name: Install Bot
+     docker-compose:
+      build: yes
+      nocache: yes
+      project_src: ./Bot
+      state: present
