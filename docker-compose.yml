@@ -27,6 +27,7 @@ services:
                 hostname: 'logstash'
                 links:
                         - elasticsearch
+                restart: always
                 depends_on:
                         - elasticsearch
                 volumes:
@@ -44,5 +45,21 @@ services:
                         - '50000:50000'
                 links:
                         - logstash
+                        - bot
                 volumes:
                         - ./jenkins:/var/jenkins_home
+        
+        bot:
+                build:
+                        dockerfile: ./Dockerfile
+                        context: .
+                container_name: 'bot'
+                hostname: 'bot'
+                ports:
+                        - '3000:3000'
+                links:
+                        - elasticsearch
+                        - kibana
+                volumes:
+                        - ./Bot:/etc
+                        - /etc/node_modules

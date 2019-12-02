@@ -1,7 +1,7 @@
 ---
-- name: CI Bot
+- name: Deploy CI Bot
   hosts: targets
-  gather_facts: false:
+  gather_facts: false
   become: true
   tasks:
 
@@ -18,14 +18,16 @@
        - docker-compose
 
    - name: Clone Repository
+     become: false
      git:
-      repo: ''
+      repo: 'git@github.ncsu.edu:csc510-fall2019/CSC510-26.git'
       dest: ./Bot
+      accept_hostkey: yes
       update: yes
 
-   - name: Install Bot
-     docker-compose:
-      build: yes
-      nocache: yes
-      project_src: ./Bot
-      state: present
+   - name: Install bot
+     shell: docker-compose up -d --build
+
+   - name: Start Filebeat service in Jenkins
+     shell: chmod go-w /etc/filebeat/filebeat.yml
+     shell: docker exec -it jenkins service filebeat start
