@@ -9,6 +9,7 @@ services:
                 ports:
                         - '9200:9200'
                         - '9300:9300'
+                restart: always
 
         kibana:
                 image: 'elastic/kibana:7.4.2'
@@ -20,6 +21,7 @@ services:
                         - elasticsearch
                 links:
                         - elasticsearch
+                restart: always
 
         logstash:
                 image: 'elastic/logstash:7.4.2'
@@ -33,6 +35,7 @@ services:
                 volumes:
                         - ./logstash:/logstash-config
                 command: logstash -f /logstash-config/logstash.conf --config.reload.automatic
+                restart: always
 
         jenkins:
                 build:
@@ -48,6 +51,7 @@ services:
                         - bot
                 volumes:
                         - ./jenkins:/var/jenkins_home
+                restart: always
         
         bot:
                 build:
@@ -63,3 +67,4 @@ services:
                 volumes:
                         - ./Bot:/etc
                         - /etc/node_modules
+                restart: always
