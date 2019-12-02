@@ -9,7 +9,7 @@
      apt:
       update_cache: yes
 
-   - name: Install Dependencies
+   - name: Install Dependenciess
      apt:
       state: present
       pkg:
